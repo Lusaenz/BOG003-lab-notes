@@ -1,9 +1,11 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { firebaseSetting } from './firebase/confiFirebase';
-import Register from './views/TempletSignUp';
-import Login from './views/TempletLogin';
-import AddNotes from './components/NewNote';
+/* eslint-disable */
+
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { firebaseSetting } from "./firebase/confiFirebase";
+import Register from "./views/TempletSignUp";
+import Login from "./views/TempletLogin";
+import ContainerNote from "./components/ContainerNote";
 
 // import { AddNotes} from './NewNote'
 
@@ -15,7 +17,14 @@ const App = function () {
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Notes" element={<AddNotes />} />
+        <Route
+          path="/Home"
+          element={
+            <>
+              <ContainerNote />
+            </>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

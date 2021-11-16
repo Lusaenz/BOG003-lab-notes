@@ -1,0 +1,55 @@
+/* eslint-disable */
+import React, { useState } from "react";
+const AddNotes = (props) => {
+  const [nameNote, setNameNote] = useState("");
+  const [newNote, setNewNote] = useState("");
+  
+  const titleNote = (event) => {
+    setNameNote(event.target.value);
+  };
+  const addNoteNew = (event) => {
+    setNewNote(event.target.value);
+  };
+  const [validation, setValidation] = useState(true);
+
+  const submit = (event) => {
+    event.preventDefault();
+    if(newNote.trim() !== ""){
+        props.listNewNote(newNote);
+        setNameNote("");
+        setNewNote("");
+        setValidation(true);
+    }else{
+      setValidation(false)
+    }
+  
+  }
+  return (
+    <>
+      <form className="form" onSubmit={submit}>
+        <input
+          type="text"
+          value={nameNote}
+          placeholder="Titulo"
+          onChange={titleNote}
+        />
+        <textarea
+          name="note"
+          color="40"
+          rows="2"
+          value={newNote}
+          placeholder="Añadir nota"
+          onChange={addNoteNew}
+        />
+        <button> Añadir</button>
+      </form>
+      {
+        !validation && 
+        <div className="validation"> Añada una nota por favot
+        </div>
+      }
+      {/* {note === "" ? <p>Escribe algo</p> : <p>ya escribiste</p>} */}
+    </>
+  );
+};
+export default AddNotes;
