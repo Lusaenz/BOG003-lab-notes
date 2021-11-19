@@ -1,10 +1,12 @@
 /* eslint-disable */
 import React, { useState } from "react";
+import { NoteCollection, CaptureData } from "../firebase/Firebase";
 const AddNotes = (props) => {
   const [nameNote, setNameNote] = useState("");
   const [newNote, setNewNote] = useState("");
   
   const titleNote = (event) => {
+    console.log(event.target);
     setNameNote(event.target.value);
   };
   const addNoteNew = (event) => {
@@ -15,10 +17,12 @@ const AddNotes = (props) => {
   const submit = (event) => {
     event.preventDefault();
     if(newNote.trim() !== ""){
-        props.listNewNote(newNote);
+        //props.listNewNote(newNote);
+       // props.listNewTitle(nameNote)
         setNameNote("");
         setNewNote("");
         setValidation(true);
+        NoteCollection(nameNote, newNote, "Creadas");
     }else{
       setValidation(false)
     }
@@ -41,13 +45,11 @@ const AddNotes = (props) => {
           placeholder="Añadir nota"
           onChange={addNoteNew}
         />
-        <button> Añadir</button>
+        <button type="submit">Añadir</button>
       </form>
-      {
-        !validation && 
-        <div className="validation"> Añada una nota por favot
-        </div>
-      }
+      {!validation && (
+        <div className="validation"> Añada una nota por favot</div>
+      )}
       {/* {note === "" ? <p>Escribe algo</p> : <p>ya escribiste</p>} */}
     </>
   );

@@ -1,5 +1,7 @@
 /* eslint-disable */
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
 
 // import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,5 +22,7 @@ const firebaseSetting = () => {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+  
 };
-export { firebaseSetting };
+
+export { firebaseSetting, getFirestore };

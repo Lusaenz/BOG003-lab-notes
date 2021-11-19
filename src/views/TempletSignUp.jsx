@@ -1,6 +1,7 @@
-import React from 'react';
-import { Formik } from 'formik';
-import { userRegister, RegisterGoogle } from '../firebase/Firebase';
+/* eslint-disable */
+import React from "react";
+import { Formik } from "formik";
+import { userRegister, RegisterGoogle } from "../firebase/Firebase";
 
 const Register = function () {
   return (
@@ -8,26 +9,26 @@ const Register = function () {
       <h1>Bienvenidx</h1>
       <Formik
         initialValues={{
-          name: '',
-          email: '',
-          password: '',
+          name: "",
+          email: "",
+          password: "",
         }}
         validate={(values) => {
           const errors = {};
           if (!values.name) {
-            errors.name = 'Campo Requerido';
+            errors.name = "Campo Requerido";
             /* eslint-disable */
             /^[a-zA-Z\_\-]{4,16}$/i.test(values.name);
           } else if (!values.email) {
-            errors.email = 'Campo Requerido';
+            errors.email = "Campo Requerido";
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
-            errors.email = 'Correo invalido';
+            errors.email = "Correo invalido";
           } else if (!values.password) {
-            errors.password = 'Campo Requerido';
+            errors.password = "Campo Requerido";
             /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/i.test(
-              values.password,
+              values.password
             );
           }
           return errors;
@@ -78,11 +79,7 @@ const Register = function () {
             <button type="submit" disabled={isSubmitting}>
               Registrate
             </button>
-            <button
-              type="button"
-              className=""
-              onClick={() => RegisterGoogle()}
-            >
+            <button type="button" className="" onClick={() => RegisterGoogle()}>
               Continua con Google
             </button>
             <p>¿Ya tienes una cuenta?</p>
@@ -94,4 +91,4 @@ const Register = function () {
   );
 };
 
-export default Register ;
+export default Register;
