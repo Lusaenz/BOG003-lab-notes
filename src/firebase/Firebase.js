@@ -10,11 +10,11 @@ import {
   collection,
   addDoc,
   onSnapshot,
-  getFirestore,
   doc,
   query,
 } from "firebase/firestore";
 
+import { db } from "./confiFirebase";
 
 const userRegister = (email, password) => {
   const auth = getAuth();
@@ -27,6 +27,7 @@ const userRegister = (email, password) => {
     }
   );
 };
+
 const RegisterGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
@@ -42,16 +43,16 @@ const RegisterGoogle = () => {
 const LoginEmailPassword = (email, password) => {
   const auth = getAuth();
   signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    console.log(user, "AQUI ESTOY");
-    // ...
-  });
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user, "AQUI ESTOY");
+      // ...
+    });
 };
+
 const NoteCollection = async (titleNote, content, statusNotes) => {
   try {
-    const db = getFirestore()
     const docRef = await addDoc(collection(db, "note"), {
       nameNote: titleNote,
       contentNote: content,
@@ -63,20 +64,18 @@ const NoteCollection = async (titleNote, content, statusNotes) => {
     console.error("Error adding document: ", e);
   }
 }
+
 const CaptureData = (setData) => {
-  const db = getFirestore();
   const q = query(collection(db, "note"));
-   const notes = [];
   onSnapshot(q, (querySnapshot) => {
+    const notes = [];
     querySnapshot.forEach((doc) => {
-      notes.push({...doc.data(),id:doc.id});
+      notes.push({ ...doc.data(), id: doc.id });
     });
-    
+    return setData(notes);
   });
-  return setData(notes);
- 
-  
 }
+
 export {
   RegisterGoogle,
   userRegister,
