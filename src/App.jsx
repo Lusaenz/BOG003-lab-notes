@@ -8,9 +8,7 @@ import Login from "./views/TempletLogin";
 import ContainerNote from "./components/ContainerNote";
 
 // import { AddNotes} from './NewNote'
-
-firebaseSetting();
-
+//firebaseSetting();
 const App = function () {
   return (
     <BrowserRouter>

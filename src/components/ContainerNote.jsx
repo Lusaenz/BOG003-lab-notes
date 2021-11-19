@@ -35,7 +35,7 @@ const ContainerNote = () => {
         <div key={i}>
           <p>{e.nameNote}</p>
           {console.log("item", e)}
-          <p>{e.contentNote}</p>
+         ñp' <p>{e.contentNote}</p>
         </div>
         /*<Note key={i} nameNote={e.nameNote} contentNote={e.nameNote} />*/
       ))}

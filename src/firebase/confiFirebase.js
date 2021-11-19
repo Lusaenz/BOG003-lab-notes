@@ -25,4 +25,5 @@ const firebaseSetting = () => {
   
 };
 
+
 export { firebaseSetting, getFirestore };
