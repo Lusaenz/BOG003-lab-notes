@@ -3,19 +3,20 @@ import react from "react";
 import { NoteCollection } from "../firebase/Firebase"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons"
+import "./Note.css"
 const Note = (props) => {
   return (
     <>
-      <section>
-        <div className="inputTitle">
-          <input type="text" value="" /> {props.nameNote}
+      <section className="note">
+        <div >
+          <p className="title">{props.nameNote}</p>
         </div>
         <div>
-          <textarea name="note" color="40" rows="2" value="" disabled />{" "}
-          {props.contentNote}
+          <textarea className="content" value={props.contentNote} disabled />
         </div>
         <div>
-          <FontAwesomeIcon icon={faEllipsisV} />
+          <FontAwesomeIcon className="icono" 
+          icon={faEllipsisV} />
         </div>
       </section>
     </>

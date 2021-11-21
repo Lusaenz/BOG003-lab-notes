@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from "react";
 import { Formik } from "formik";
-import { userRegister, RegisterGoogle } from "../firebase/Firebase";
+import { userRegister, registerGoogle } from "../firebase/Firebase";
 
 const Register = function () {
   return (
@@ -79,7 +79,7 @@ const Register = function () {
             <button type="submit" disabled={isSubmitting}>
               Registrate
             </button>
-            <button type="button" className="" onClick={() => RegisterGoogle()}>
+            <button type="button" className="" onClick={() => registerGoogle()}>
               Continua con Google
             </button>
             <p>¿Ya tienes una cuenta?</p>

@@ -1,14 +1,10 @@
 /* eslint-disable */
-
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { firebaseSetting } from "./firebase/confiFirebase";
 import Register from "./views/TempletSignUp";
 import Login from "./views/TempletLogin";
 import ContainerNote from "./components/ContainerNote";
-
 // import { AddNotes} from './NewNote'
-//firebaseSetting();
 const App = function () {
   return (
     <BrowserRouter>

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { NoteCollection, CaptureData } from "../firebase/Firebase";
+import { noteCollection } from "../firebase/Firebase";
 const AddNotes = (props) => {
   const [nameNote, setNameNote] = useState("");
   const [newNote, setNewNote] = useState("");
@@ -17,12 +17,10 @@ const AddNotes = (props) => {
   const submit = (event) => {
     event.preventDefault();
     if(newNote.trim() !== ""){
-        //props.listNewNote(newNote);
-       // props.listNewTitle(nameNote)
         setNameNote("");
         setNewNote("");
         setValidation(true);
-        NoteCollection(nameNote, newNote, "Creadas");
+        noteCollection(nameNote, newNote, "Creadas");
     }else{
       setValidation(false)
     }
@@ -51,6 +49,9 @@ const AddNotes = (props) => {
         <div className="validation"> Añada una nota por favot</div>
       )}
       {/* {note === "" ? <p>Escribe algo</p> : <p>ya escribiste</p>} */}
+      {
+        
+      }
     </>
   );
 };

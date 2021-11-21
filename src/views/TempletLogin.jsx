@@ -1,12 +1,12 @@
 /* eslint-disable */
 import React from "react";
 import { Formik } from "formik";
-import { RegisterGoogle, LoginEmailPassword } from "../firebase/Firebase";
-
+import { registerGoogle, loginEmailPassword } from "../firebase/Firebase";
+import "./TempletLogin.css"
 const Login = function () {
   return (
-    <div>
-      <Formik
+    <div className="containerLogin">
+     <Formik
         initialValues={{
           email: "",
           password: "",
@@ -41,8 +41,9 @@ const Login = function () {
           isSubmitting,
           /* and other goodies */
         }) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="formLogin">
             <input
+              className="input"
               type="email"
               name="email"
               placeholder="Correo electronico"
@@ -52,6 +53,7 @@ const Login = function () {
             />
             {errors.email && touched.email && errors.email}
             <input
+              className="input"
               type="password"
               name="password"
               placeholder="Contraseña"
@@ -61,13 +63,17 @@ const Login = function () {
             />
             {errors.password && touched.password && errors.password}
             <button
-              onClick={() => LoginEmailPassword()}
+              onClick={() => loginEmailPassword()}
               type="submit"
               disabled={isSubmitting}
             >
               Inicia sesión
             </button>
-            <button type="button" className="" onClick={() => RegisterGoogle()}>
+            <button
+              type="button"
+              className="btn.login"
+              onClick={() => registerGoogle()}
+            >
               Continua con Google
             </button>
           </form>
