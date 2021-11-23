@@ -2,7 +2,8 @@
 import react from "react";
 import { NoteCollection } from "../firebase/Firebase"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons"
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import Option from "./Options"
 import "./Note.css"
 const Note = (props) => {
   return (
@@ -15,8 +16,10 @@ const Note = (props) => {
           <textarea className="content" value={props.contentNote} disabled />
         </div>
         <div>
-          <FontAwesomeIcon className="icono" 
-          icon={faEllipsisV} />
+          <FontAwesomeIcon
+           className="icono" 
+           icon={faEllipsisV}/>
+          <Option/> 
         </div>
       </section>
     </>
