@@ -1,12 +1,14 @@
 /* eslint-disable */
 import React from "react";
+import {  useNavigate } from "react-router-dom"
 import { Formik } from "formik";
 import { registerGoogle, loginEmailPassword } from "../firebase/Firebase";
 import "./TempletLogin.css"
 const Login = function () {
+const navigate = useNavigate();
   return (
     <div className="containerLogin">
-     <Formik
+      <Formik
         initialValues={{
           email: "",
           password: "",
@@ -63,7 +65,11 @@ const Login = function () {
             />
             {errors.password && touched.password && errors.password}
             <button
-              onClick={() => loginEmailPassword()}
+              onClick={() =>
+                loginEmailPassword(values.email, values.password).then(() => {
+                  navigate("/Home");
+                })
+              }
               type="submit"
               disabled={isSubmitting}
             >

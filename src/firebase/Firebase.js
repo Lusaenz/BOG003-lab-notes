@@ -12,6 +12,9 @@ import {
   onSnapshot,
   doc,
   query,
+  updateDoc,
+  deleteDoc,
+  where,
 } from "firebase/firestore";
 
 import { db } from "./confiFirebase";
@@ -40,23 +43,25 @@ const registerGoogle = () => {
     console.log(token, user);
   });
 };
+
 const loginEmailPassword = (email, password) => {
   const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
+  return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       console.log(user, "AQUI ESTOY");
       // ...
     });
+    
 };
 
-const noteCollection = async (titleNote, content, statusNotes) => {
+const noteCollection = async (titleNote, content, statusNotes, uid) => {
   try {
     const docRef = await addDoc(collection(db, "note"), {
       nameNote: titleNote,
       contentNote: content,
-      //uidUser: uid,
+      uidUser: uid,
       statusNote: statusNotes
     });
     console.log("Document written with ID: ", docRef.id);
@@ -76,10 +81,23 @@ const captureData = (setData) => {
   });
 }
 
+const editContent = async (id, content) => {
+  const edit = doc(db, "note", id);
+  await updateDoc(edit, {
+    contentNote: content,
+  });
+};
+const deleteNote = async (id) => {
+  await deleteDoc(doc(db, "note", id));
+}
+
+
 export {
   registerGoogle,
   userRegister,
   loginEmailPassword,
   noteCollection,
   captureData,
+  editContent,
+  deleteNote
 };

@@ -2,11 +2,13 @@
 import React from "react";
 import { Formik } from "formik";
 import { userRegister, registerGoogle } from "../firebase/Firebase";
+import logo from "../img"
+
 
 const Register = function () {
   return (
-    <div>
-      <h1>Bienvenidx</h1>
+    <>
+      <h1 className="Bienvenidx">Bienvenidx</h1>
       <Formik
         initialValues={{
           name: "",
@@ -87,7 +89,7 @@ const Register = function () {
           </form>
         )}
       </Formik>
-    </div>
+    </>
   );
 };
 

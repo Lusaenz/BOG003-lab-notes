@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*CONTENDOR DE TODA LA PAGINA RESPONSIVE*/
+@media (max-width:768px) {
+ .Bienvenidx{
+   align-items: center;
+   color: blue;
+ }
+ 
+}
